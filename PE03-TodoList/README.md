@@ -1,0 +1,8 @@
+**Input:**
+The program operates based on the input-process-output model. In the context of this project, the input primarily involves the task descriptions provided by the user. These task descriptions are collected through an input field in the `AddTask` component. As users input task descriptions and click the "Add Task" button, these descriptions become the input for further processing.
+
+**Process:**
+The processing stage involves several components and functions working together. In the `App` component, the task descriptions are managed using the `useState` hook to create and update an array of tasks. This array is then passed down as a prop to the `Tasks` component. In the `Tasks` component, each task description is mapped to a `Card` component, where a "Delete" button is associated with each task. When the "Delete" button is clicked, the `onDelete` function is triggered, which updates the task array by removing the corresponding task description. This interaction between components and functions exemplifies the processing stage.
+
+**Output:**
+The output stage pertains to the updated task descriptions array, which reflects the user's actions. When a task is added, it is appended to the array. When a "Delete" button is clicked, the associated task is removed from the array. This modified array serves as the output of the program, showing the current state of tasks after processing user interactions. The `Tasks` component renders this output by displaying the remaining tasks along with their associated "Delete" buttons. The output is visualized in the application's user interface, providing users with real-time feedback on their task management actions.
