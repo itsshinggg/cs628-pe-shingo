@@ -6,6 +6,12 @@ import './App.css';
 function App() {
   const [taskDescriptions, setTaskDescriptions] = useState([]);
 
+  const handleDelete = (index) => {
+    const updatedTasks = [...taskDescriptions];
+    updatedTasks.splice(index, 1);
+    setTaskDescriptions(updatedTasks);
+  };
+
   return (
     <div className="App">
       <h1>ToDo Lisst App</h1>
@@ -13,7 +19,7 @@ function App() {
         taskDescriptions={taskDescriptions}
         setTaskDescriptions={setTaskDescriptions}
       />
-    <Tasks tasks={taskDescriptions}/>
+    <Tasks tasks={taskDescriptions} onDelete={handleDelete}/>
     </div>
   );
 }
