@@ -1,0 +1,13 @@
+.submit-btn {
+    width: 10%;
+    background-color: rgb(42, 168, 210);
+    color: white;
+    margin-left: 0;
+}
+
+.delete-btn {
+    width: 10%;
+    margin-left: 80%;
+    background-color: red;
+    color: white;
+}
