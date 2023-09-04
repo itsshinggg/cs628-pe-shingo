@@ -6,7 +6,6 @@ const RecipeList = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   useEffect(() => {
-    // Fetch data from the API when the component mounts
     fetch('https://friendly-telegram-p575rv9wr4636rq-5050.app.github.dev/recipes')
       .then((response) => response.json())
       .then((data) => setRecipes(data))
