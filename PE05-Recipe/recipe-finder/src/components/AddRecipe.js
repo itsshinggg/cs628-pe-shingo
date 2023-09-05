@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './../styles/AddRecipe.css';
 
 const AddRecipe = () => {
+  const { id } = useParams();
   const [recipe, setRecipe] = useState({
     name: '',
     ingredients: '',
     instructions: '',
   });
+
+  useEffect(() => {
+    if (id) {
+      fetch(`https://friendly-telegram-p575rv9wr4636rq-5050.app.github.dev/recipes/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setRecipe(data);
+        })
+        .catch((error) => console.error('Error fetching data:', error));
+    }
+  }, [id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +60,7 @@ const AddRecipe = () => {
 
   return (
     <div className="add-recipe">
-      <h2>Add New Recipe</h2>
+      <h2>{id ? 'Update Recipe' : 'Add New Recipe'}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Recipe Name</label>
@@ -82,7 +95,7 @@ const AddRecipe = () => {
             required
           ></textarea>
         </div>
-        <button type="submit">Add Recipe</button>
+        <button type="submit">{id ? 'Update Recipe' : 'Add Recipe'}</button>
       </form>
     </div>
   );

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 const RecipeDetails = ({ recipes }) => {
   const { id } = useParams();
 
-  const recipe = recipes.find((r) => r.id === id);
+  const recipe = recipes.find((r) => r._id === id);
 
   if (!recipe) {
     return <div>Recipe not found</div>;
@@ -16,11 +16,7 @@ const RecipeDetails = ({ recipes }) => {
       <div className="recipe-info">
         <div className="recipe-ingredients">
           <h3>Ingredients</h3>
-          <ul>
-            {recipe.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
+          <p>{recipe.ingredients}</p>
         </div>
         <div className="recipe-instructions">
           <h3>Instructions</h3>
@@ -32,3 +28,4 @@ const RecipeDetails = ({ recipes }) => {
 };
 
 export default RecipeDetails;
+

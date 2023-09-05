@@ -11,7 +11,6 @@ app.use(express.json());
 
 app.use("/recipes", recipes);
 
-// start the Express server
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });

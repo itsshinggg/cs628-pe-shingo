@@ -21,6 +21,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   let newDocument = {
+    id: Date.now(),
     name: req.body.name,
     ingredients: req.body.ingredients,
     instructions: req.body.instructions,

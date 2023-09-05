@@ -5,13 +5,13 @@ import AddRecipe from './components/AddRecipe';
 import RecipeDetails from './components/RecipeDetails';
 import UpdateRecipe from './components/UpdateRecipe';
 
+
 import './index.css';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    // Fetch your recipe data here and update the state
     fetch('https://friendly-telegram-p575rv9wr4636rq-5050.app.github.dev/recipes')
       .then((response) => response.json())
       .then((data) => setRecipes(data))
@@ -32,9 +32,6 @@ function App() {
             </li>
             <li>
               <Link to="/recipe-list">Recipe List</Link>
-            </li>
-            <li>
-              <Link to={`/recipe/${recipes.id}`}>View Details</Link>
             </li>
           </ul>
         </nav>
@@ -64,10 +61,11 @@ function App() {
             path="/add-recipe"
             element={<AddRecipe />}
           />
-          <Route
-            path="/update-recipe/:id"
-            element={<UpdateRecipe />}
-          />
+<Route
+  path="/update-recipe/:id"
+  element={<UpdateRecipe recipes={recipes} />}
+/>
+
         </Routes>
       </div>
     </Router>
@@ -75,76 +73,3 @@ function App() {
 }
 
 export default App;
-
-
-
-// import React from 'react';
-// import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-// import RecipeList from './components/RecipeList';
-// import AddRecipe from './components/AddRecipe';
-// import RecipeDetails from './components/RecipeDetails';
-// import UpdateRecipe from './components/UpdateRecipe';
-
-
-// import './index.css';
-
-// function App() {
-
-//   return (
-//     <Router>
-//       <div className="App">
-//         <h1>Recipe Finder</h1>
-//         <nav>
-//           <ul className="nav-links">
-//             <li>
-//               <Link to="/">Home</Link>
-//             </li>
-//             <li>
-//             <Link to="/add-recipe">Add Recipe</Link> 
-//             </li>
-//             <li>
-//               <Link to="/recipe-list">Recipe List</Link>
-//             </li>
-//             <li>
-//             <Link to={`/recipe/${recipes.id}`}>View Details</Link>
-//             </li>
-//           </ul>
-//         </nav>
-//         <Routes>
-//           <Route
-//             path="/"
-//             element={
-//               <div>
-//                 <h2>Let's Find A Meal! </h2>
-//               </div>
-//             }
-//           />
-//           <Route
-//             path="/recipe-list"
-//             element={
-//               <div>
-//                 <h2>Recipe List</h2>
-//                 <RecipeList recipes={recipes} />
-//               </div>
-//             }
-//           />
-//           <Route
-//             path="/recipe/:id"
-//             element={<RecipeDetails recipes={recipes} />}
-//           />
-//           <Route
-//             path="/add-recipe"
-//             element={<AddRecipe onAddRecipe={AddRecipe} />}
-//           />
-//           <Route
-//             path="/update-recipe/:id"
-//             element={<UpdateRecipe onUpdate={UpdateRecipe} />}
-//           />
-
-//         </Routes>
-//       </div>
-//     </Router>
-//   );
-// }
-
-// export default App;
